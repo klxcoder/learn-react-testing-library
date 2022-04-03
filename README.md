@@ -1,70 +1,30 @@
-# Getting Started with Create React App
+# Một số điểm cần chú ý
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
-## Available Scripts
-
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
++ Phân biệt "test suite" với "test case"
++ Nếu tạo app bằng lệnh create-react-app thì "React Testing Library" và "jest" đã được cài sẵn rồi nên ko cần cài nữa
++ Phân biệt "React Testing Library" và "jest"
+	+ "jest" cung cấp cú pháp để viết "test suite", "test case", "assertion"
+	+ "React Testing Library" cung cấp "render" (để render React Component to virtual DOM), cung cấp "fireEvent" (để có thể click chuột, check vào checkbox, click vào radio, nhập liệu vào input), cung cấp "screen" (để lấy DOM elements, lấy div, lấy form field dựa vào text hoặc dựa vào id, hoặc dựa vào className)
+	+ Nói tóm lại: "jest" cung cấp cú pháp để viết test, "React Testing Library" hỗ trợ tương tác với DOM
++ Ngoài thằng "React Testing Library" thì còn có "Enzyme" cũng hỗ trợ tương tác với DOM nhưng mà thằng "Enzyme" nó phức tạp hơn.
++ Các khái niệm, từ khóa sau là của thằng "jest":
+	+ describe, test, it, expect, toBe
+	+ beforeEach, beforeAll, afterEach, afterAll
++ Các khái niệm, từ khóa sau là của thằng "React Testing Library":
+	+ render, fireEvent, screen
+	+ getByText, getByTestId
+	+ getByRole, getByLabelText, getByPlaceholderText, getByAltText, getByDisplayValue
+	+ queryByText
+	+ queryByRole, queryByLabelText, queryByPlaceholderText, queryByAltText, queryByDisplayValue
+	+ getBy trả về element hoặc error -> ko thích hợp khi muốn check element ko có trong DOM
+	+ Khi check element ko có trong DOM -> dùng queryBy
+	+ Ngoài getBy và queryBy thì còn có findBy
+	+ findByText
+	+ findByRole, findByLabelText, findByPlaceholderText, findByAltText, findByDisplayValue
+	+ findBy dùng để xử lí bất đồng bộ (Promise, async, await, fetch,...)
++ Phân biệt fireEvent và userEvent
+	+ fireEvent trong '@testing-library/react' dùng để click chuột, đặt value cho input,...
+	+ userEvent trong '@testing-library/user-event' dùng để gõ vào input
+	+ userEvent cũng tương tự fireEvent nhưng:
+	+ userEvent giống người thật hơn (có thể gõ vào input, có thể keyup, keydown,...)
+	+ fireEvent giống robot hơn
