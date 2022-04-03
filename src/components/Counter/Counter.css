@@ -1,0 +1,16 @@
+.text-center {
+    text-align: center;
+}
+
+input, button {
+    font-size: 2rem;
+    padding: 0.5rem 2rem;
+}
+
+.green {
+    color: green;
+}
+
+.red {
+    color: red;
+}
